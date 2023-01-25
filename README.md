@@ -17,7 +17,18 @@ This project is under construction ...
 
 ```bash
 npm install --save bpmn-js-react
+
 ```
+
+## Usage
+
+```javascript
+
+```
+
+## Resources
+
+* [Issues](https://github.com/majeeddl/bpmn-js-react/issues)
 
 ## License
 
