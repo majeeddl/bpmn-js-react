@@ -1,0 +1,8 @@
+
+.bjs-powered-by{
+    display: none;
+}
+.bpmn-js-react-editor-container, .bpmn-js-react-view-container{
+    border: silver 2px solid;
+    height: 400;
+}

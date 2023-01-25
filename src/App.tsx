@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import './App.css'
+import { BpmnJsReact } from './lib'
 
 function App() {
   return (
     <div className="App">
-       Hello BPMN JS REACT
+      <BpmnJsReact></BpmnJsReact>
     </div>
-  )
+  );
 }
 
 export default App
