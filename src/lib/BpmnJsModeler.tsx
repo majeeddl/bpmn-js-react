@@ -11,6 +11,7 @@ import React, {
 import BpmnModeler from "bpmn-js/lib/Modeler";
 
 import { defaultBpmnXml } from "../utils/bpmn.utils";
+import ZoomActions from "../components/ZoomActions";
 
 export type BpmnJsModelerProps = {
   xml?: string;
@@ -19,6 +20,7 @@ export type BpmnJsModelerProps = {
   onError?: Function;
   onShown?: Function;
   saveXml?: Function;
+  zoomActions?: boolean;
 };
 
 const BpmnJsModeler = forwardRef(
@@ -26,6 +28,7 @@ const BpmnJsModeler = forwardRef(
     {
       xml = defaultBpmnXml,
       height = 400,
+      zoomActions = true,
       onLoading = () => {},
       onError = () => {},
       onShown = () => {},
@@ -62,15 +65,29 @@ const BpmnJsModeler = forwardRef(
     useImperativeHandle(
       ref,
       () => ({
-        saveXml(result, options = { format: false }) {
+        saveXml(result: any, options = { format: false }) {
           bpmnEditor.saveXML(options, result);
         },
-        async saveXmlAsync(result, options = { format: false }) {
+        async saveXmlAsync(result: any, options = { format: false }) {
           return await bpmnEditor.saveXML(options, result);
+        },
+        zoomIn(step = 0.1) {
+          bpmnEditor.get("zoomScroll").stepZoom(step);
+        },
+        zoomOut(step = 0.1) {
+          bpmnEditor.get("zoomScroll").stepZoom(-step);
         },
       }),
       [bpmnEditor]
     );
+
+    const zoomIn = () => {
+      bpmnEditor.get("zoomScroll").stepZoom(0.1);
+    };
+
+    const zoomOut = () => {
+      bpmnEditor.get("zoomScroll").stepZoom(-0.1);
+    };
 
     // const saveXml = () => {
     //   alert("hi");
@@ -82,11 +99,18 @@ const BpmnJsModeler = forwardRef(
 
     return (
       <>
-        <div
-          className="bpmn-js-react-editor-container"
-          ref={containerRef}
-          style={{ height }}
-        ></div>
+        <div className="bpmn-wrapper">
+          <div
+            className="bpmn-js-react-editor-container"
+            ref={containerRef}
+            style={{ height }}
+          ></div>
+          <div className="actions-wrapper">
+            {zoomActions && (
+              <ZoomActions zoomIn={zoomIn} zoomOut={zoomOut}></ZoomActions>
+            )}
+          </div>
+        </div>
       </>
     );
   }
