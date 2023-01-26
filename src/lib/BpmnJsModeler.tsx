@@ -8,11 +8,17 @@ import { defaultBpmnXml } from "../utils/bpmn.utils";
 export type BpmnJsModelerProps = {
   xml?: string;
   height?: any;
+  onLoading?: Function;
+  onError?: Function;
+  onShown?: Function;
 };
 
 const BpmnJsModeler = ({
   xml = defaultBpmnXml,
   height = 400,
+  onLoading = () => {},
+  onError = () => {},
+  onShown = () => {},
   ...props
 }: BpmnJsModelerProps) => {
   const containerRef = useRef(null);
@@ -27,7 +33,18 @@ const BpmnJsModeler = ({
 
   useEffect(() => {
     bpmnEditor?.importXML(xml);
-    bpmnEditor?.get("canvas").zoom("fit-viewport");
+
+    bpmnEditor?.on("import.done", (event) => {
+      const { error, warning } = event;
+
+      if (error) {
+        return onError(error);
+      }
+
+      bpmnEditor.get("canvas").zoom("fit-viewport");
+
+      onShown(warning);
+    });
   }, [bpmnEditor, xml]);
 
   // useEffect(() => {
@@ -35,14 +52,13 @@ const BpmnJsModeler = ({
   // }, [xml, bpmnEditor]);
 
   return (
-    <div>
-      BpmnJSModeler
+    <>
       <div
         className="bpmn-js-react-editor-container"
         ref={containerRef}
         style={{ height }}
       ></div>
-    </div>
+    </>
   );
 };
 
