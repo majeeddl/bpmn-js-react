@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import BpmnJSModeler from "./BpmnJsModeler";
 import BpmnJsViewer from "./BpmnJsViewer";
 
@@ -12,24 +12,26 @@ export enum BpmnJsReactModeType {
 export type BpmnJsReactProps = {
   mode?: BpmnJsReactModeType;
   xml?: any;
+  height?: any;
+  onLoading?: Function;
+  onError?: Function;
+  onShown?: Function;
 };
 
-const BpmnJsReact = ({
-  mode = BpmnJsReactModeType.View,
-  xml,
-  ...props
-}: BpmnJsReactProps) => {
-  return (
-    <>
-      {mode == BpmnJsReactModeType.Edit && (
-        <BpmnJSModeler {...props}></BpmnJSModeler>
-      )}
+const BpmnJsReact = forwardRef(
+  ({ mode = BpmnJsReactModeType.View, xml, ...props }:any, ref) => {
+    return (
+      <>
+        {mode == BpmnJsReactModeType.Edit && (
+          <BpmnJSModeler {...props} ref={ref}></BpmnJSModeler>
+        )}
 
-      {mode == BpmnJsReactModeType.View && (
-        <BpmnJsViewer xml={xml} {...props}></BpmnJsViewer>
-      )}
-    </>
-  );
-};
+        {mode == BpmnJsReactModeType.View && (
+          <BpmnJsViewer xml={xml} {...props} ref={ref}></BpmnJsViewer>
+        )}
+      </>
+    );
+  }
+);
 
 export default BpmnJsReact;
