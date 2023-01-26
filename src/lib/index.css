@@ -1,8 +1,15 @@
-
+.bpmn-wrapper{
+    position: relative;
+}
 .bjs-powered-by{
     display: none;
 }
 .bpmn-js-react-editor-container, .bpmn-js-react-view-container{
     border: silver 2px solid;
     height: 400;
+}
+.actions-wrapper{
+    position: absolute;
+    top: 10px;
+    right:10px
 }

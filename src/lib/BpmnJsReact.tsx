@@ -3,6 +3,7 @@ import BpmnJSModeler from "./BpmnJsModeler";
 import BpmnJsViewer from "./BpmnJsViewer";
 
 import { defaultBpmnXml } from "../utils/bpmn.utils";
+import { MantineProvider } from "@mantine/core";
 
 export enum BpmnJsReactModeType {
   Edit = "edit",
@@ -19,16 +20,18 @@ export type BpmnJsReactProps = {
 };
 
 const BpmnJsReact = forwardRef(
-  ({ mode = BpmnJsReactModeType.View, xml, ...props }:any, ref) => {
+  ({ mode = BpmnJsReactModeType.View, xml, ...props }: any, ref) => {
     return (
       <>
-        {mode == BpmnJsReactModeType.Edit && (
-          <BpmnJSModeler {...props} ref={ref}></BpmnJSModeler>
-        )}
+        <MantineProvider withGlobalStyles withNormalizeCSS>
+          {mode == BpmnJsReactModeType.Edit && (
+            <BpmnJSModeler {...props} ref={ref}></BpmnJSModeler>
+          )}
 
-        {mode == BpmnJsReactModeType.View && (
-          <BpmnJsViewer xml={xml} {...props} ref={ref}></BpmnJsViewer>
-        )}
+          {mode == BpmnJsReactModeType.View && (
+            <BpmnJsViewer xml={xml} {...props} ref={ref}></BpmnJsViewer>
+          )}
+        </MantineProvider>
       </>
     );
   }

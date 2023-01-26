@@ -1,9 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 
 import BpmnViewer from "bpmn-js/dist/bpmn-navigated-viewer.production.min.js";
+import ZoomActions from "../components/ZoomActions";
 
 export type BpmnViewerProps = {
   xml: any;
+  height?: any;
+  zoomActions?: boolean;
   onLoading?: Function;
   onError?: Function;
   onShown?: Function;
@@ -11,6 +14,8 @@ export type BpmnViewerProps = {
 
 const BpmnJsViewer = ({
   xml,
+  height = 300,
+  zoomActions = true,
   onLoading = () => {},
   onError = () => {},
   onShown = () => {},
@@ -43,13 +48,32 @@ const BpmnJsViewer = ({
     });
   }, [bpmnViewer, xml]);
 
+  const zoomIn = () => {
+    bpmnViewer.get("zoomScroll").stepZoom(0.1);
+  };
+
+  const zoomOut = () => {
+    bpmnViewer.get("zoomScroll").stepZoom(-0.1);
+  };
+
   // useEffect(() => {
   //   bpmnViewer?.importXML(xml);
   // }, [xml, bpmnViewer]);
 
   return (
     <>
-      <div className="bpmn-js-react-view-container" ref={containerRef}></div>
+      <div className="bpmn-wrapper">
+        <div
+          className="bpmn-js-react-view-container"
+          ref={containerRef}
+          style={{ height }}
+        ></div>
+        <div className="actions-wrapper">
+          {zoomActions && (
+            <ZoomActions zoomIn={zoomIn} zoomOut={zoomOut}></ZoomActions>
+          )}
+        </div>
+      </div>
     </>
   );
 };
