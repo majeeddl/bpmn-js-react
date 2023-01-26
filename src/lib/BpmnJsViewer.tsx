@@ -2,9 +2,20 @@ import React, { useRef, useState, useEffect } from "react";
 
 import BpmnViewer from "bpmn-js/dist/bpmn-navigated-viewer.production.min.js";
 
-import { defaultBpmnXml } from "../utils/bpmn.utils";
+export type BpmnViewerProps = {
+  xml: any;
+  onLoading?: Function;
+  onError?: Function;
+  onShown?: Function;
+};
 
-const BpmnJsViewer = ({ xml = defaultBpmnXml }) => {
+const BpmnJsViewer = ({
+  xml,
+  onLoading = () => {},
+  onError = () => {},
+  onShown = () => {},
+  ...props
+}: BpmnViewerProps) => {
   const containerRef = useRef(null);
   const [bpmnViewer, setBpmnViewer] = useState<BpmnViewer>();
 
@@ -18,6 +29,18 @@ const BpmnJsViewer = ({ xml = defaultBpmnXml }) => {
   useEffect(() => {
     bpmnViewer?.importXML(xml);
     bpmnViewer?.get("canvas").zoom("fit-viewport");
+
+    bpmnViewer?.on("import.done", (event: any) => {
+      const { error, warning } = event;
+
+      if (error) {
+        return onError(error);
+      }
+
+      bpmnViewer.get("canvas").zoom("fit-viewport");
+
+      onShown(warning);
+    });
   }, [bpmnViewer, xml]);
 
   // useEffect(() => {

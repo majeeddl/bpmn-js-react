@@ -2,18 +2,33 @@ import React, { useEffect, useRef, useState } from "react";
 import BpmnJSModeler from "./BpmnJsModeler";
 import BpmnJsViewer from "./BpmnJsViewer";
 
-// import BpmnJSViewer from "bpmn-js/dist/bpmn-navigated-viewer.production.min.js";
-// // import BpmnJSModeler from "bpmn-js/dist/bpmn-modeler.production.min.js";
-// import BpmnJSModeler from "bpmn-js/lib/Modeler";
+import { defaultBpmnXml } from "../utils/bpmn.utils";
 
-const BpmnJsReact = ({ mode = "view" }) => {
+export enum BpmnJsReactModeType {
+  Edit = "edit",
+  View = "view",
+}
+
+export type BpmnJsReactProps = {
+  mode?: BpmnJsReactModeType;
+  xml?: any;
+};
+
+const BpmnJsReact = ({
+  mode = BpmnJsReactModeType.View,
+  xml,
+  ...props
+}: BpmnJsReactProps) => {
   return (
-    <div>
-      BpmnJsReact :
-      <BpmnJSModeler></BpmnJSModeler>
-      <br></br>
-      <BpmnJsViewer></BpmnJsViewer>
-    </div>
+    <>
+      {mode == BpmnJsReactModeType.Edit && (
+        <BpmnJSModeler {...props}></BpmnJSModeler>
+      )}
+
+      {mode == BpmnJsReactModeType.View && (
+        <BpmnJsViewer xml={xml} {...props}></BpmnJsViewer>
+      )}
+    </>
   );
 };
 
