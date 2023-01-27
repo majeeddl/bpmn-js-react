@@ -3,8 +3,7 @@ import "../../node_modules/bpmn-js/dist/assets/bpmn-js.css";
 import "../../node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
 import "./index.css";
 
-export * from "./BpmnJsViewer";
-export * from "./BpmnJsModeler";
-export * from "./BpmnJsReact";
+import BpmnJsReact from "./BpmnJsReact";
+import BpmnJsModeler from "./BpmnJsModeler";
 
-// export { default as HelloWorld } from "./HelloWorld";
+export { BpmnJsReact,BpmnJsModeler };

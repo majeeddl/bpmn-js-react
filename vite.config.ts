@@ -21,6 +21,16 @@ export default defineConfig({
           "react-dom": "ReactDOM",
         },
       },
+       plugins: [
+        typescriptPaths({
+          preserveExtensions: true,
+        }),
+        typescript({
+          sourceMap: false,
+          declaration: true,
+          outDir: "dist",
+        }),
+      ],
     },
   },
 });
