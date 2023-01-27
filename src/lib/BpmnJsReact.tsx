@@ -2,6 +2,7 @@ import React, { forwardRef, useEffect, useRef, useState } from "react";
 import BpmnJSModeler from "./BpmnJsModeler";
 import BpmnJsViewer from "./BpmnJsViewer";
 
+
 import "./index.scss";
 
 import { defaultBpmnXml } from "../utils/bpmn.utils";
@@ -19,10 +20,9 @@ export type BpmnJsReactProps = {
   onLoading?: Function;
   onError?: Function;
   onShown?: Function;
-  saveXml?: Function;
 };
 
-const BpmnJsReact = forwardRef<BpmnJsReactProps, any>(
+const BpmnJsReact = forwardRef<HTMLElement, BpmnJsReactProps>(
   ({ mode = BpmnJsReactModeType.View, xml, ...props }, ref) => {
     return (
       <>

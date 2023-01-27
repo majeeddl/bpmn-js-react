@@ -14,14 +14,17 @@ This project is under construction ...
 ## Install
 
 ```bash
-npm install --save bpmn-js-react
+yarn add bpmn-hs-react 
 
+or
+
+npm install --save bpmn-js-react
 ```
 
-## Usage
+### Usage
 
 ```javascript
-import BpmnJsReact from "bpmn-js-react";
+import { BpmnJsReact } from "bpmn-js-react";
 
 const ComponentForBpmnViewer = (props) => {
   return <BpmnJsReact xml={xml} />;
