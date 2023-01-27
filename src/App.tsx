@@ -11,9 +11,9 @@ import { defaultBpmnXml } from "./utils/bpmn.utils";
 function App() {
   const ref = useRef<any>();
   return (
-    <div className="App">
+    <div className="App" >
       {/* <BpmnJsModeler></BpmnJsModeler> */}
-      <BpmnJsReact mode={BpmnJsReactModeType.Edit} ref={ref}></BpmnJsReact>
+      <BpmnJsReact mode={BpmnJsReactModeType.Edit} ref={ref} ></BpmnJsReact>
       <button
         onClick={() =>
           console.log(

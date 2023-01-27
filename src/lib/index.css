@@ -1,5 +1,6 @@
-.bpmn-wrapper{
+.bpmn-wrapper {
     position: relative;
+    direction: ltr;
 }
 .bjs-powered-by{
     display: none;

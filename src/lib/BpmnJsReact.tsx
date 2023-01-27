@@ -2,11 +2,6 @@ import React, { forwardRef, useEffect, useRef, useState } from "react";
 import BpmnJSModeler from "./BpmnJsModeler";
 import BpmnJsViewer from "./BpmnJsViewer";
 
-// import "../../node_modules/bpmn-js/dist/assets/diagram-js.css";
-// import "../../node_modules/bpmn-js/dist/assets/bpmn-js.css";
-// import "../../node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
-// import "./index.css";
-
 import "./index.scss";
 
 import { defaultBpmnXml } from "../utils/bpmn.utils";
@@ -24,10 +19,11 @@ export type BpmnJsReactProps = {
   onLoading?: Function;
   onError?: Function;
   onShown?: Function;
+  saveXml?: Function;
 };
 
-const BpmnJsReact = forwardRef(
-  ({ mode = BpmnJsReactModeType.View, xml, ...props }: any, ref) => {
+const BpmnJsReact = forwardRef<BpmnJsReactProps, any>(
+  ({ mode = BpmnJsReactModeType.View, xml, ...props }, ref) => {
     return (
       <>
         <MantineProvider withGlobalStyles withNormalizeCSS>
