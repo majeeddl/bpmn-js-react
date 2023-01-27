@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import "./App.css";
-import { BpmnJsReact } from "./lib";
+// import { BpmnJsReact } from "./lib";
 import { BpmnJsReactModeType } from "./lib/BpmnJsReact";
 
 import { defaultBpmnXml } from "./utils/bpmn.utils";
@@ -12,7 +12,7 @@ function App() {
   const ref = useRef<any>();
   return (
     <div className="App">
-      <BpmnJsReact mode={BpmnJsReactModeType.Edit} ref={ref}></BpmnJsReact>
+      {/* <BpmnJsReact mode={BpmnJsReactModeType.Edit} ref={ref}></BpmnJsReact>
       <button
         onClick={() =>
           console.log(
@@ -24,7 +24,7 @@ function App() {
       </button>
       <br />
 
-      <BpmnJsReact xml={defaultBpmnXml} zoomActions={false}></BpmnJsReact>
+      <BpmnJsReact xml={defaultBpmnXml} zoomActions={false}></BpmnJsReact> */}
     </div>
   );
 }
