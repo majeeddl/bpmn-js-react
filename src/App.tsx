@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
 import "./App.css";
 // import { BpmnJsReact } from "./lib";
-import { BpmnJsReactModeType } from "./lib/BpmnJsReact";
+// import { BpmnJsReactModeType } from "./lib/BpmnJsReact";
 
-import { defaultBpmnXml } from "./utils/bpmn.utils";
+// import { defaultBpmnXml } from "./utils/bpmn.utils";
 
-import { Stack, ActionIcon, MantineProvider, Button } from "@mantine/core";
-import { IconZoomIn, IconZoomOut } from "@tabler/icons";
+// import { Stack, ActionIcon, MantineProvider, Button } from "@mantine/core";
+// import { IconZoomIn, IconZoomOut } from "@tabler/icons";
+
 
 function App() {
   const ref = useRef<any>();

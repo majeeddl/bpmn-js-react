@@ -1,6 +1,6 @@
 {
   "name": "bpmn-js-react",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "author": "Majeed Dourandeesh",
   "repository": {
@@ -11,13 +11,13 @@
     "dist",
     "README.md"
   ],
-  "main": "./dist/bpmn-js-react.umd.cjs",
-  "module": "./dist/bpmn-js-react.js",
+  "main": "./dist/bpmn-js-react.umd.js",
+  "module": "./dist/bpmn-js-react.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/bpmn-js-react.js",
-      "require": "./dist/bpmn-js-react.umd.cjs"
+      "import": "./dist/bpmn-js-react.es.js",
+      "require": "./dist/bpmn-js-react.umd.js"
     }
   },
   "scripts": {
