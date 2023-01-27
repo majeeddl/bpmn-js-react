@@ -1,19 +1,19 @@
 import { useRef, useState } from "react";
 import "./App.css";
-// import { BpmnJsReact } from "./lib";
-// import { BpmnJsReactModeType } from "./lib/BpmnJsReact";
+import { BpmnJsReact, BpmnJsModeler } from "./lib";
+import { BpmnJsReactModeType } from "./lib/BpmnJsReact";
 
-// import { defaultBpmnXml } from "./utils/bpmn.utils";
+import { defaultBpmnXml } from "./utils/bpmn.utils";
 
 // import { Stack, ActionIcon, MantineProvider, Button } from "@mantine/core";
 // import { IconZoomIn, IconZoomOut } from "@tabler/icons";
-
 
 function App() {
   const ref = useRef<any>();
   return (
     <div className="App">
-      {/* <BpmnJsReact mode={BpmnJsReactModeType.Edit} ref={ref}></BpmnJsReact>
+      {/* <BpmnJsModeler></BpmnJsModeler> */}
+      <BpmnJsReact mode={BpmnJsReactModeType.Edit} ref={ref}></BpmnJsReact>
       <button
         onClick={() =>
           console.log(
@@ -25,7 +25,7 @@ function App() {
       </button>
       <br />
 
-      <BpmnJsReact xml={defaultBpmnXml} zoomActions={false}></BpmnJsReact> */}
+      <BpmnJsReact xml={defaultBpmnXml} zoomActions={false}></BpmnJsReact>
     </div>
   );
 }
