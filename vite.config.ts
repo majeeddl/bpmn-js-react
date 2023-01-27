@@ -19,18 +19,8 @@ export default defineConfig({
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
-        },
-      },
-       plugins: [
-        typescriptPaths({
-          preserveExtensions: true,
-        }),
-        typescript({
-          sourceMap: false,
-          declaration: true,
-          outDir: "dist",
-        }),
-      ],
+        }
+      }
     },
   },
 });
