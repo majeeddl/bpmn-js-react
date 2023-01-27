@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 
+//@ts-ignore
 import BpmnViewer from "bpmn-js/dist/bpmn-navigated-viewer.production.min.js";
 import ZoomActions from "../components/ZoomActions";
 

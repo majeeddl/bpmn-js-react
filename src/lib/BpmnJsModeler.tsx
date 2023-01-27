@@ -8,6 +8,7 @@ import React, {
 } from "react";
 
 // import BpmnJSModeler from "bpmn-js/dist/bpmn-modeler.production.min.js";
+//@ts-ignore
 import BpmnModeler from "bpmn-js/lib/Modeler";
 
 import { defaultBpmnXml } from "../utils/bpmn.utils";
@@ -49,7 +50,7 @@ const BpmnJsModeler = forwardRef(
     useEffect(() => {
       bpmnEditor?.importXML(xml);
 
-      bpmnEditor?.on("import.done", (event) => {
+      bpmnEditor?.on("import.done", (event:any) => {
         const { error, warning } = event;
 
         if (error) {

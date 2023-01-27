@@ -2,7 +2,7 @@ import React from "react";
 import { Stack, ActionIcon, MantineProvider, Button } from "@mantine/core";
 import { IconZoomIn, IconZoomOut } from "@tabler/icons";
 
-const ZoomActions = ({ zoomIn, zoomOut }) => {
+const ZoomActions = ({ zoomIn, zoomOut }:any) => {
   return (
     <>
       <Button.Group orientation="vertical" style={{ width: 40 }}>
