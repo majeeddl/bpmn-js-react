@@ -14,7 +14,7 @@ This project is under construction ...
 ## Install
 
 ```bash
-yarn add bpmn-hs-react 
+yarn add bpmn-js-react 
 
 or
 
