@@ -1,5 +1,4 @@
 # bpmn-js-react
-<meta name="google-site-verification" content="29R8oO9WwS1SVXx9Jrt9vn6heATLPojIxE5gZJ4HHks" />
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 ![All Contributors](https://img.shields.io/github/forks/majeeddl/bpmn-js-react.svg)
