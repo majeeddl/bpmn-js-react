@@ -5,33 +5,35 @@ import BpmnJsViewer from "./BpmnJsViewer";
 import "./index.scss";
 
 import { defaultBpmnXml } from "../utils/bpmn.utils";
-import { MantineProvider } from "@mantine/core";
-
-export enum BpmnJsReactModeType {
-  Edit = "edit",
-  View = "view",
-}
+import { MantineProvider } from "@mantine/core"
 
 export type BpmnJsReactProps = {
-  mode?: BpmnJsReactModeType;
+  mode?: 'view' | 'edit';
   xml?: any;
   height?: any;
   onLoading?: Function;
   onError?: Function;
   onShown?: Function;
   zoomActions?: boolean;
+  save?: Function;
 };
 
-const BpmnJsReact = forwardRef<HTMLElement, BpmnJsReactProps>(
-  ({ mode = BpmnJsReactModeType.View, xml, ...props }, ref) => {
+const BpmnJsReact = forwardRef<any, BpmnJsReactProps>(
+  ({ mode = 'view', xml, ...props }, ref) => {
     return (
       <>
         <MantineProvider withGlobalStyles withNormalizeCSS>
-          {mode == BpmnJsReactModeType.Edit && (
-            <BpmnJSModeler {...props} ref={ref}></BpmnJSModeler>
+          {mode == 'edit' && (
+            <BpmnJSModeler
+              {...props}
+              ref={ref}
+              onClick={(e: any) => {
+                console.log(e);
+              }}
+            ></BpmnJSModeler>
           )}
 
-          {mode == BpmnJsReactModeType.View && (
+          {mode =='view' && (
             <BpmnJsViewer xml={xml} {...props} ref={ref}></BpmnJsViewer>
           )}
         </MantineProvider>
