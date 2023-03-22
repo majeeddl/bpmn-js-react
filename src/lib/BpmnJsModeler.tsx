@@ -21,6 +21,8 @@ export type BpmnJsModelerProps = {
   onError?: Function;
   onShown?: Function;
   saveXml?: Function;
+  onClick?: Function;
+  onDbclick?: Function;
   zoomActions?: boolean;
 };
 
@@ -33,6 +35,8 @@ const BpmnJsModeler = forwardRef(
       onLoading = () => {},
       onError = () => {},
       onShown = () => {},
+      onClick = () => {},
+      onDbclick = () => {},
       ...props
     }: BpmnJsModelerProps,
     ref
@@ -50,7 +54,7 @@ const BpmnJsModeler = forwardRef(
     useEffect(() => {
       bpmnEditor?.importXML(xml);
 
-      bpmnEditor?.on("import.done", (event:any) => {
+      bpmnEditor?.on("import.done", (event: any) => {
         const { error, warning } = event;
 
         if (error) {
@@ -61,7 +65,18 @@ const BpmnJsModeler = forwardRef(
 
         onShown(warning);
       });
+
+      // bpmnEditor?.on("element.click", onClick);
+
+      bpmnEditor?.on("element.click", (e: any) => {
+        console.log(e.element.id);
+        getConvas().addMarker(e.element.id, "test");
+      });
     }, [bpmnEditor, xml]);
+
+    const getConvas = () => {
+      return bpmnEditor?.get("canvas");
+    };
 
     useImperativeHandle(
       ref,

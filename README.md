@@ -7,7 +7,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-This project is developed for using Use bpmn-js to display BPMN 2.0 diagrams in a React application.
+This project is developed for using Use [bpmn-js](https://github.com/bpmn-io/bpmn-js) to display BPMN 2.0 diagrams in a React application.
 
 
 ## Install

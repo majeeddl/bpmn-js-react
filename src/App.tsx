@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       {/* <BpmnJsModeler></BpmnJsModeler> */}
-      <BpmnJsReact mode={BpmnJsReactModeType.Edit} ref={ref}></BpmnJsReact>
+      <BpmnJsReact mode="edit" ref={ref}></BpmnJsReact>
       <button
         onClick={() =>
           console.log(
