@@ -1,4 +1,3 @@
-
 // export type BpmnJsProps = {
 //   xml?: string;
 //   height?: any;
@@ -11,15 +10,22 @@
 //   zoomActions?: boolean;
 // };
 
+import { IElement } from "./bpmn.interface";
 
 export type BpmnJsReactHandle = {
   saveXml: Function;
   saveXmlAsync: Function;
+  getModeler : Function;
   getCanvas: Function;
   zoomIn: Function;
   zoomOut: Function;
   zoomFit: Function;
-
+  setColor: (
+    elements: IElement[],
+    color: { stroke?: string; fill?: string } | object
+  ) => void;
+  addMarker : (id : string , cssClass : string) => void;
+  removeMarker : (id : string , cssClass : string) => void;
 };
 
 export type BpmnJsReactProps = {

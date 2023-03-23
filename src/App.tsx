@@ -10,12 +10,14 @@ import { defaultBpmnXml } from "./utils/bpmn.utils";
 function App() {
   const ref = useRef<BpmnJsReactHandle>(null);
 
+  const [elements, setElements] = useState<any>([]);
+
   return (
     <div className="App">
       <BpmnJsReact
         mode="edit"
         ref={ref}
-        click={(e:any) => console.log(e)}
+        click={(e: any) => setElements([e.element])}
       ></BpmnJsReact>
       <button
         onClick={() => {
@@ -25,6 +27,48 @@ function App() {
         }}
       >
         save
+      </button>
+      <button
+        onClick={() => {
+          console.log(
+            ref.current?.setColor(elements, {
+              stroke: "#00ff00",
+              fill: "#ffff00",
+            })
+          );
+        }}
+      >
+        set color
+      </button>
+      <button
+        onClick={() => {
+          console.log(
+            ref.current?.setColor(elements, {
+              stroke: "black",
+              fill: "white",
+            })
+          );
+        }}
+      >
+        clear color
+      </button>
+      <button
+        onClick={() => {
+          elements.forEach((element: any) => {
+            ref.current?.addMarker(element.id, "highlight");
+          });
+        }}
+      >
+        addMarker
+      </button>
+      <button
+        onClick={() => {
+          elements.forEach((element: any) => {
+            ref.current?.removeMarker(element.id, "highlight");
+          });
+        }}
+      >
+        removeMarker
       </button>
       <br />
 
