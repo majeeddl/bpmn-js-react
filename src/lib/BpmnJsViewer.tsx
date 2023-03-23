@@ -59,7 +59,7 @@ const BpmnJsViewer: ForwardRefRenderFunction<
         return onError(error);
       }
 
-      bpmnViewer.get("canvas").zoom("fit-viewport");
+      zoomFit()
 
       onShown(warning);
     });
@@ -71,6 +71,10 @@ const BpmnJsViewer: ForwardRefRenderFunction<
 
   const zoomOut = () => {
     bpmnViewer.get("zoomScroll").stepZoom(-0.1);
+  };
+
+  const zoomFit = () => {
+    bpmnViewer.get("canvas").zoom("fit-viewport");
   };
 
   // useEffect(() => {
@@ -87,7 +91,11 @@ const BpmnJsViewer: ForwardRefRenderFunction<
         ></div>
         <div className="actions-wrapper">
           {zoomActions && (
-            <ZoomActions zoomIn={zoomIn} zoomOut={zoomOut}></ZoomActions>
+            <ZoomActions
+              zoomIn={zoomIn}
+              zoomOut={zoomOut}
+              zoomFit={zoomFit}
+            ></ZoomActions>
           )}
         </div>
       </div>

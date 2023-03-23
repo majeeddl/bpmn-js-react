@@ -68,7 +68,7 @@ const BpmnJsModeler: ForwardRefRenderFunction<
         return onError(error);
       }
 
-      bpmnEditor.get("canvas").zoom("fit-viewport");
+      zoomFit();
 
       onShown(warning);
     });
@@ -95,6 +95,9 @@ const BpmnJsModeler: ForwardRefRenderFunction<
       async saveXmlAsync(result: any, options = { format: false }) {
         return await bpmnEditor.saveXML(options, result);
       },
+      getModeler() {
+        return bpmnEditor;
+      },
       getCanvas() {
         return bpmnEditor.get("canvas");
       },
@@ -106,6 +109,15 @@ const BpmnJsModeler: ForwardRefRenderFunction<
       },
       zoomFit() {
         bpmnEditor.get("canvas").zoom("fit-viewport");
+      },
+      setColor(elements: any, color: any) {
+        bpmnEditor.get("modeling").setColor(elements, color);
+      },
+      addMarker(id: string, cssClass: string) {
+        bpmnEditor.get("canvas").addMarker(id, cssClass);
+      },
+      removeMarker(id: string, cssClass: string) {
+        bpmnEditor.get("canvas").removeMarker(id, cssClass);
       },
     }),
     [bpmnEditor]
