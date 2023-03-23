@@ -1,6 +1,11 @@
 import "./index.scss";
 
 import BpmnJsReact from "./BpmnJsReact";
-import BpmnJsModeler from "./BpmnJsModeler";
+import {
+  BpmnJsReactHandle,
+  BpmnJsReactProps,
+} from "../interfaces/bpmnJsReact.interface";
+// import BpmnJsModeler from "./BpmnJsModeler";
 
-export { BpmnJsReact, BpmnJsModeler };
+export type { BpmnJsReactProps, BpmnJsReactHandle };
+export { BpmnJsReact };
