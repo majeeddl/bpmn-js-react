@@ -1,23 +1,24 @@
-import { useRef, useState } from "react";
+import { ElementRef, useRef, useState } from "react";
 import "./App.css";
-import { BpmnJsReact, BpmnJsModeler } from "./lib";
+import BpmnJsReact, { BpmnJsReactHandle } from "./lib/BpmnJsReact";
 import { defaultBpmnXml } from "./utils/bpmn.utils";
 
 // import { Stack, ActionIcon, MantineProvider, Button } from "@mantine/core";
 // import { IconZoomIn, IconZoomOut } from "@tabler/icons";
 
 function App() {
-  const ref = useRef<any>();
+
+  const ref = useRef<BpmnJsReactHandle>(null);
+
   return (
     <div className="App">
-      {/* <BpmnJsModeler></BpmnJsModeler> */}
       <BpmnJsReact mode="edit" ref={ref}></BpmnJsReact>
       <button
-        onClick={() =>
+        onClick={() => {
           console.log(
-            ref.current.saveXml((err: any, xml: string) => console.log(xml))
-          )
-        }
+            ref.current?.saveXml((err: any, xml: string) => console.log(xml))
+          );
+        }}
       >
         save
       </button>
