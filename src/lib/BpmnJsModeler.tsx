@@ -76,7 +76,7 @@ const BpmnJsModeler: ForwardRefRenderFunction<
     // bpmnEditor?.on("element.click", onClick);
 
     bpmnEditor?.on("element.click", (e: any) => {
-      console.log("🚀 ~ file: BpmnJsModeler.tsx:78 ~ bpmnEditor?.on ~ e:", e);
+      // console.log("🚀 ~ file: BpmnJsModeler.tsx:78 ~ bpmnEditor?.on ~ e:", e);
       click(e);
       // getConvas().addMarker(e.element.id, "test");
     });
