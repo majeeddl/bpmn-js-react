@@ -9,7 +9,10 @@ import React, {
 //@ts-ignore
 import BpmnViewer from "bpmn-js/dist/bpmn-navigated-viewer.production.min.js";
 import ZoomActions from "../components/ZoomActions";
-import { BpmnJsProps, BpmnJsReactHandle } from "../interfaces/IBpmnJsReact";
+import {
+  BpmnJsReactHandle,
+  BpmnJsReactProps,
+} from "../interfaces/bpmnJsReact.interface";
 
 // export type BpmnViewerProps = {
 //   xml: any;
@@ -20,7 +23,10 @@ import { BpmnJsProps, BpmnJsReactHandle } from "../interfaces/IBpmnJsReact";
 //   onShown?: Function;
 // };
 
-const BpmnJsViewer: ForwardRefRenderFunction<BpmnJsReactHandle, BpmnJsProps> = (
+const BpmnJsViewer: ForwardRefRenderFunction<
+  BpmnJsReactHandle,
+  BpmnJsReactProps
+> = (
   {
     xml,
     height = 300,

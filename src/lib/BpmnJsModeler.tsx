@@ -14,8 +14,10 @@ import BpmnModeler from "bpmn-js/lib/Modeler";
 
 import { defaultBpmnXml } from "../utils/bpmn.utils";
 import ZoomActions from "../components/ZoomActions";
-import { BpmnJsReactHandle, BpmnJsReactProps } from "../interfaces/IBpmnJsReact";
-
+import {
+  BpmnJsReactHandle,
+  BpmnJsReactProps,
+} from "../interfaces/bpmnJsReact.interface";
 
 // export type BpmnJsModelerProps = {
 //   xml?: string;
@@ -29,7 +31,6 @@ import { BpmnJsReactHandle, BpmnJsReactProps } from "../interfaces/IBpmnJsReact"
 //   zoomActions?: boolean;
 // };
 
-
 const BpmnJsModeler: ForwardRefRenderFunction<
   BpmnJsReactHandle,
   BpmnJsReactProps
@@ -41,8 +42,8 @@ const BpmnJsModeler: ForwardRefRenderFunction<
     onLoading = () => {},
     onError = () => {},
     onShown = () => {},
-    onClick = () => {},
-    onDbclick = () => {},
+    click = () => {},
+    dbclick = () => {},
     ...props
   }: BpmnJsReactProps,
   ref
@@ -75,8 +76,9 @@ const BpmnJsModeler: ForwardRefRenderFunction<
     // bpmnEditor?.on("element.click", onClick);
 
     bpmnEditor?.on("element.click", (e: any) => {
-      console.log(e.element.id);
-      getConvas().addMarker(e.element.id, "test");
+      console.log("🚀 ~ file: BpmnJsModeler.tsx:78 ~ bpmnEditor?.on ~ e:", e);
+      click(e);
+      // getConvas().addMarker(e.element.id, "test");
     });
   }, [bpmnEditor, xml]);
 
@@ -93,11 +95,17 @@ const BpmnJsModeler: ForwardRefRenderFunction<
       async saveXmlAsync(result: any, options = { format: false }) {
         return await bpmnEditor.saveXML(options, result);
       },
+      getCanvas() {
+        return bpmnEditor.get("canvas");
+      },
       zoomIn(step = 0.1) {
         bpmnEditor.get("zoomScroll").stepZoom(step);
       },
       zoomOut(step = 0.1) {
         bpmnEditor.get("zoomScroll").stepZoom(-step);
+      },
+      zoomFit() {
+        bpmnEditor.get("canvas").zoom("fit-viewport");
       },
     }),
     [bpmnEditor]
@@ -109,6 +117,10 @@ const BpmnJsModeler: ForwardRefRenderFunction<
 
   const zoomOut = () => {
     bpmnEditor.get("zoomScroll").stepZoom(-0.1);
+  };
+
+  const zoomFit = () => {
+    bpmnEditor.get("canvas").zoom("fit-viewport");
   };
 
   // const saveXml = () => {
@@ -129,7 +141,11 @@ const BpmnJsModeler: ForwardRefRenderFunction<
         ></div>
         <div className="actions-wrapper">
           {zoomActions && (
-            <ZoomActions zoomIn={zoomIn} zoomOut={zoomOut}></ZoomActions>
+            <ZoomActions
+              zoomIn={zoomIn}
+              zoomOut={zoomOut}
+              zoomFit={zoomFit}
+            ></ZoomActions>
           )}
         </div>
       </div>

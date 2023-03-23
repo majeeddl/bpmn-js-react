@@ -31,7 +31,7 @@ const ComponentForBpmnViewer = (props) => {
 
 const ComponentForBpmnModeler = (props) => {
 
-  const ref = useRef();
+  const ref = useRef<BpmnJsReactHandle>();
 
   return (
      <div>
@@ -41,6 +41,42 @@ const ComponentForBpmnModeler = (props) => {
   );
 };
 ```
+
+## Props
+
+<table width="100%" style="width:100%;font-size:11px">
+  <tr>
+    <th width="24%">Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>mode</td>
+    <td>'view' | 'edit'</td>
+    <td></td>
+  </tr>
+   <tr>
+    <td>xml</td>
+    <td>string</td>
+    <td>xml string of bpmn</td>
+  </tr>
+  <tr>
+    <td>height</td>
+    <td>number</td>
+    <td>Default value is 300</td>
+  </tr>
+  <tr>
+    <td>click</td>
+    <td>function</td>
+    <td>This function is called when you do click on bpmn elemnt</td>
+  </tr>
+  <tr>
+    <td>dbclick</td>
+    <td>function</td>
+    <td>This function is called when you do dbclick on bpmn elemnt</td>
+  </tr>
+</table>
+
 
 ## Resources
 

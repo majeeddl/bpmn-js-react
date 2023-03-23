@@ -1,18 +1,22 @@
 import { ElementRef, useRef, useState } from "react";
 import "./App.css";
-import BpmnJsReact, { BpmnJsReactHandle } from "./lib/BpmnJsReact";
+import BpmnJsReact from "./lib/BpmnJsReact";
+import { BpmnJsReactHandle } from "./lib/Index";
 import { defaultBpmnXml } from "./utils/bpmn.utils";
 
 // import { Stack, ActionIcon, MantineProvider, Button } from "@mantine/core";
 // import { IconZoomIn, IconZoomOut } from "@tabler/icons";
 
 function App() {
-
   const ref = useRef<BpmnJsReactHandle>(null);
 
   return (
     <div className="App">
-      <BpmnJsReact mode="edit" ref={ref}></BpmnJsReact>
+      <BpmnJsReact
+        mode="edit"
+        ref={ref}
+        click={(e:any) => console.log(e)}
+      ></BpmnJsReact>
       <button
         onClick={() => {
           console.log(

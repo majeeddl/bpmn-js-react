@@ -15,8 +15,11 @@
 export type BpmnJsReactHandle = {
   saveXml: Function;
   saveXmlAsync: Function;
+  getCanvas: Function;
   zoomIn: Function;
   zoomOut: Function;
+  zoomFit: Function;
+
 };
 
 export type BpmnJsReactProps = {
@@ -27,7 +30,11 @@ export type BpmnJsReactProps = {
   onError?: Function;
   onShown?: Function;
   saveXml?: Function;
-  onClick?: Function;
-  onDbclick?: Function;
+  click?: Function;
+  dbclick?: Function;
+  hover?: Function;
+  out?: Function;
+  mousedown?: Function;
+  mouseup?: Function;
   zoomActions?: boolean;
 };

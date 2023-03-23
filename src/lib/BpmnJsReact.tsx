@@ -12,8 +12,10 @@ import "./index.scss";
 
 import { defaultBpmnXml } from "../utils/bpmn.utils";
 import { MantineProvider } from "@mantine/core";
-import { BpmnJsReactHandle, BpmnJsReactProps } from "../interfaces/IBpmnJsReact";
-
+import {
+  BpmnJsReactHandle,
+  BpmnJsReactProps,
+} from "../interfaces/bpmnJsReact.interface";
 
 const BpmnJsReact: ForwardRefRenderFunction<
   BpmnJsReactHandle,
@@ -26,9 +28,6 @@ const BpmnJsReact: ForwardRefRenderFunction<
           <BpmnJSModeler
             {...props}
             ref={ref}
-            onClick={(e: any) => {
-              console.log(e);
-            }}
           ></BpmnJSModeler>
         )}
 
@@ -39,6 +38,5 @@ const BpmnJsReact: ForwardRefRenderFunction<
     </>
   );
 };
-
 
 export default forwardRef(BpmnJsReact);
