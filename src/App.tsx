@@ -1,7 +1,7 @@
 import { ElementRef, useRef, useState } from "react";
 import "./App.css";
+import { BpmnJsReactHandle } from "./lib";
 import BpmnJsReact from "./lib/BpmnJsReact";
-import { BpmnJsReactHandle } from "./lib/Index";
 import { defaultBpmnXml } from "./utils/bpmn.utils";
 
 // import { Stack, ActionIcon, MantineProvider, Button } from "@mantine/core";
