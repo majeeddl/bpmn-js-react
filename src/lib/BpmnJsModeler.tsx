@@ -68,7 +68,7 @@ const BpmnJsModeler: ForwardRefRenderFunction<
         return onError(error);
       }
 
-      bpmnEditor.get("canvas").zoom("fit-viewport");
+      zoomFit();
 
       onShown(warning);
     });
