@@ -27,6 +27,7 @@ const BpmnJsReact: ForwardRefRenderFunction<
         {mode == "edit" && (
           <BpmnJSModeler
             {...props}
+            xml={xml}
             ref={ref}
           ></BpmnJSModeler>
         )}

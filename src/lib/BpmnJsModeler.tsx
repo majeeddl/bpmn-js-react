@@ -95,6 +95,9 @@ const BpmnJsModeler: ForwardRefRenderFunction<
       async saveXmlAsync(result: any, options = { format: false }) {
         return await bpmnEditor.saveXML(options, result);
       },
+      importXml(xml: string) {
+        bpmnEditor?.importXML(xml);
+      },
       getModeler() {
         return bpmnEditor;
       },

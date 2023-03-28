@@ -15,6 +15,7 @@ import { IElement } from "./bpmn.interface";
 export type BpmnJsReactHandle = {
   saveXml: Function;
   saveXmlAsync: Function;
+  importXml: Function;
   getModeler : Function;
   getCanvas: Function;
   zoomIn: Function;
