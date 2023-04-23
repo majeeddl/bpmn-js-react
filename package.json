@@ -33,7 +33,7 @@
     "@mantine/core": "^6.0.6",
     "@mantine/hooks": "^6.0.6",
     "@tabler/icons-react": "^2.14.0",
-    "bpmn-js": "^12.1.0",
+    "bpmn-js": "^13.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -41,12 +41,12 @@
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^3.1.0",
+    "@vitejs/plugin-react": "^4.0.0",
     "rollup-plugin-scss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.60.0",
     "typescript": "^5.0.3",
-    "vite": "^4.2.1",
+    "vite": "^4.3.1",
     "vite-plugin-dts": "^2.2.0",
     "vite-plugin-style-inject": "^0.0.1"
   },
