@@ -23,7 +23,7 @@ npm install --save bpmn-js-react
 ### Usage
 
 ```javascript
-import { BpmnJsReact } from "bpmn-js-react";
+import { BpmnJsReact, BpmnJsReactHandle } from "bpmn-js-react";
 
 const ComponentForBpmnViewer = (props) => {
   return <BpmnJsReact xml={xml} />;
