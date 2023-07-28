@@ -3,6 +3,7 @@ import "./App.css";
 import { BpmnJsReactHandle } from "./lib";
 import BpmnJsReact from "./lib/BpmnJsReact";
 import { defaultBpmnXml } from "./utils/bpmn.utils";
+import { useBpmnJsReact } from "./hooks/bpmn.hook";
 
 // import { Stack, ActionIcon, MantineProvider, Button } from "@mantine/core";
 // import { IconZoomIn, IconZoomOut } from "@tabler/icons";
@@ -12,18 +13,22 @@ function App() {
 
   const [elements, setElements] = useState<any>([]);
 
+  const bpmnReactJs = useBpmnJsReact();
+
   return (
     <div className="App">
       <BpmnJsReact
         mode="edit"
+        useBpmnJsReact={bpmnReactJs}
         ref={ref}
         click={(e: any) => setElements([e.element])}
       ></BpmnJsReact>
       <button
         onClick={() => {
-          console.log(
-            ref.current?.saveXml((err: any, xml: string) => console.log(xml))
-          );
+          bpmnReactJs.saveXml();
+          // console.log(
+          //   ref.current?.saveXml((err: any, xml: string) => console.log(xml))
+          // );
         }}
       >
         save

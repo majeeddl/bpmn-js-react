@@ -40,4 +40,5 @@ const BpmnJsReact: ForwardRefRenderFunction<
   );
 };
 
+// export default forwardRef(BpmnJsReact);
 export default forwardRef(BpmnJsReact);
