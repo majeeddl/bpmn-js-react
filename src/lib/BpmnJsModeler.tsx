@@ -10,7 +10,7 @@ import React, {
 
 // import BpmnJSModeler from "bpmn-js/dist/bpmn-modeler.production.min.js";
 //@ts-ignore
-import BpmnModeler from "bpmn-js/lib/Modeler";
+import BpmnModeler, { BpmnModeler as IBpmnModeler } from "bpmn-js/lib/Modeler";
 
 import { defaultBpmnXml } from "../utils/bpmn.utils";
 import ZoomActions from "../components/ZoomActions";
@@ -36,6 +36,7 @@ const BpmnJsModeler: ForwardRefRenderFunction<
   BpmnJsReactProps
 > = (
   {
+    useBpmnJsReact,
     xml = defaultBpmnXml,
     height = 400,
     zoomActions = true,
@@ -49,11 +50,14 @@ const BpmnJsModeler: ForwardRefRenderFunction<
   ref
 ) => {
   const containerRef = useRef(null);
-  const [bpmnEditor, setBpmnEditor] = useState<BpmnModeler>(null);
+  const [bpmnEditor, setBpmnEditor] =
+    useState<ReturnType<typeof IBpmnModeler>>(null);
 
   useEffect(() => {
-    const container = containerRef.current;
-    setBpmnEditor(new BpmnModeler({ container }));
+    const container:any = containerRef.current;
+    const newModeler = new BpmnModeler({ container });
+    useBpmnJsReact.setBpmnModeler(newModeler)
+    setBpmnEditor(newModeler);
 
     return () => bpmnEditor?.destroy();
   }, []);
