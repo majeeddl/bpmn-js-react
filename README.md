@@ -23,7 +23,7 @@ npm install --save bpmn-js-react
 ### Usage
 
 ```javascript
-import { BpmnJsReact, BpmnJsReactHandle } from "bpmn-js-react";
+import { BpmnJsReact,useBpmnJsReact } from "bpmn-js-react";
 
 const ComponentForBpmnViewer = (props) => {
   return <BpmnJsReact xml={xml} />;
@@ -31,12 +31,13 @@ const ComponentForBpmnViewer = (props) => {
 
 const ComponentForBpmnModeler = (props) => {
 
-  const ref = useRef<BpmnJsReactHandle>();
+  const bpmnReactJs = useBpmnJsReact();
+  
 
   return (
      <div>
-         <BpmnJsReact ref={ref} mode="edit" xml={xml} />
-         <button onClick={()=>  ref.current.saveXml((err,xml) => console.log(xml))}>Save Xml</>
+         <BpmnJsReact  useBpmnJsReact={bpmnReactJs} mode="edit" xml={xml} />
+         <button onClick={()=>  bpmnReactJs.saveXml((err,xml) => console.log(xml))}>Save Xml</>
      </div>
   );
 };

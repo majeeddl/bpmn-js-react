@@ -20,7 +20,7 @@ import {
 const BpmnJsReact: ForwardRefRenderFunction<
   BpmnJsReactHandle,
   BpmnJsReactProps
-> = ({ mode = "view", xml, ...props }, ref) => {
+> = ({ mode = "view", xml, useBpmnJsReact, ...props }, ref) => {
   return (
     <>
       <MantineProvider withGlobalStyles withNormalizeCSS>
@@ -29,15 +29,22 @@ const BpmnJsReact: ForwardRefRenderFunction<
             {...props}
             xml={xml}
             ref={ref}
+            useBpmnJsReact={useBpmnJsReact}
           ></BpmnJSModeler>
         )}
 
         {mode == "view" && (
-          <BpmnJsViewer xml={xml} {...props} ref={ref}></BpmnJsViewer>
+          <BpmnJsViewer
+            xml={xml}
+            {...props}
+            ref={ref}
+            useBpmnJsReact={useBpmnJsReact}
+          ></BpmnJsViewer>
         )}
       </MantineProvider>
     </>
   );
 };
 
+// export default forwardRef(BpmnJsReact);
 export default forwardRef(BpmnJsReact);
