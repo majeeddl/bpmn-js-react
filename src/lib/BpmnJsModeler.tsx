@@ -56,7 +56,7 @@ const BpmnJsModeler: ForwardRefRenderFunction<
   useEffect(() => {
     const container:any = containerRef.current;
     const newModeler = new BpmnModeler({ container });
-    useBpmnJsReact.setBpmnModeler(newModeler)
+    useBpmnJsReact?.setBpmnModeler(newModeler)
     setBpmnEditor(newModeler);
 
     return () => bpmnEditor?.destroy();
