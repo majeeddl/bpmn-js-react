@@ -70,10 +70,9 @@ export const useBpmnJsReact: BpmnJsReactHook = () => {
   ) => Promise<SaveXMLResult> = async (options = { format: false }) =>
     bpmnModeler?.saveXML(options);
 
-
-  const getElements = ()=>{
+  const getElements = () => {
     return bpmnModeler?.get("elementRegistry").getAll();
-  }
+  };
   const getElementById = (id: string) => {
     return bpmnModeler?.get("elementRegistry").get(id);
   };
@@ -105,14 +104,17 @@ export const useBpmnJsReact: BpmnJsReactHook = () => {
   //PROPERTIES
   const getElementRegistry = () => bpmnModeler?.get("elementRegistry");
 
+  const getBusinessObject = (id: string) => {
+    return getElementRegistry()?.get(id).businessObject;
+  };
+
   const getAttribute = (id: string, key: string) => {
-    return getElementById(id).businessObject[key];
+    return getBusinessObject(id)[key];
   };
 
   const setAttribute = (id: any, name: string, value: any) => {
-    getElementById(id).businessObject[name] = value;
+    getBusinessObject(id)[name] = value;
   };
-
 
   return {
     bpmnModeler,
