@@ -37,6 +37,11 @@ export type BpmnJsReactHook = () => {
   getCanvas: () => any;
   getAttribute: (id: string, attr: string) => any;
   setAttribute: (id: string, attr: string, value: any) => void;
+  getElements: () => any;
+  getBusinessObject: (id: string) => any;
+  getIncoming: (id: string) => any;
+  getOutgoing: (id: string) => any;
+
 };
 
 export const useBpmnJsReact: BpmnJsReactHook = () => {
@@ -116,6 +121,14 @@ export const useBpmnJsReact: BpmnJsReactHook = () => {
     getBusinessObject(id)[name] = value;
   };
 
+  const getIncoming = (id: string) => {
+    return getBusinessObject(id).incoming;
+  };
+
+  const getOutgoing = (id: string) => {
+    return getBusinessObject(id).outgoing;
+  };
+
   return {
     bpmnModeler,
     setBpmnModeler,
@@ -123,6 +136,7 @@ export const useBpmnJsReact: BpmnJsReactHook = () => {
     saveXml,
     saveXmLAsync,
     getCanvas,
+    getElements,
     getElementById,
     zoomIn,
     zoomOut,
@@ -133,5 +147,7 @@ export const useBpmnJsReact: BpmnJsReactHook = () => {
     removeMarker,
     getAttribute,
     setAttribute,
+    getIncoming,
+    getOutgoing,
   };
 };

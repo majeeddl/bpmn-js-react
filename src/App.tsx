@@ -96,6 +96,24 @@ function App() {
       >
         getAttribute
       </button>
+      <button
+        onClick={() => {
+          const incoming = bpmnReactJs.getIncoming(elements[0]?.id);
+
+          console.log(incoming);
+        }}
+      >
+        get Incoming
+      </button>
+      <button
+        onClick={() => {
+          const outgoing = bpmnReactJs.getOutgoing(elements[0]?.id);
+
+          console.log(outgoing);
+        }}
+      >
+        get outgoing
+      </button>
       <br />
 
       <BpmnJsReact
