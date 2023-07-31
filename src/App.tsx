@@ -80,14 +80,18 @@ function App() {
       </button>
       <button
         onClick={() => {
-          bpmnReactJs.setAttribute(elements[0]?.id, "property", "test");
+          bpmnReactJs.setAttribute(elements[0]?.id, "property", {
+            name: "test",
+          });
         }}
       >
         setAttribute
       </button>
       <button
         onClick={() => {
-          bpmnReactJs.getAttribute(elements[0]?.id, "property");
+          const attr = bpmnReactJs.getAttribute(elements[0]?.id, "property");
+
+          console.log(attr);
         }}
       >
         getAttribute
