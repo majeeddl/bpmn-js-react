@@ -24,8 +24,10 @@ function App() {
         click={(e: any) => setElements([e.element])}
       ></BpmnJsReact>
       <button
-        onClick={() => {
-          bpmnReactJs.saveXml();
+        onClick={async () => {
+          bpmnReactJs.saveXml((err: any, xml: string) => console.log(xml));
+
+          // console.log(await bpmnReactJs.saveXmLAsync());
           // console.log(
           //   ref.current?.saveXml((err: any, xml: string) => console.log(xml))
           // );
@@ -35,8 +37,9 @@ function App() {
       </button>
       <button
         onClick={() => {
+          console.log(elements);
           console.log(
-            ref.current?.setColor(elements, {
+            bpmnReactJs.setColor(elements, {
               stroke: "#00ff00",
               fill: "#ffff00",
             })
@@ -48,7 +51,7 @@ function App() {
       <button
         onClick={() => {
           console.log(
-            ref.current?.setColor(elements, {
+            bpmnReactJs.setColor(elements, {
               stroke: "black",
               fill: "white",
             })
@@ -74,6 +77,20 @@ function App() {
         }}
       >
         removeMarker
+      </button>
+      <button
+        onClick={() => {
+          bpmnReactJs.setAttribute(elements[0]?.id, "property", "test");
+        }}
+      >
+        setAttribute
+      </button>
+      <button
+        onClick={() => {
+          bpmnReactJs.getAttribute(elements[0]?.id, "property");
+        }}
+      >
+        getAttribute
       </button>
       <br />
 
