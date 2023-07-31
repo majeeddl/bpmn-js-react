@@ -138,6 +138,7 @@ export const useBpmnJsReact: BpmnJsReactHook = () => {
     getCanvas,
     getElements,
     getElementById,
+    getBusinessObject,
     zoomIn,
     zoomOut,
     zoomFit,
