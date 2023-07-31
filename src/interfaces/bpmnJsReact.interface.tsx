@@ -32,7 +32,7 @@ export type BpmnJsReactHandle = {
 
 export type BpmnJsReactProps = {
   mode?: "view" | "edit";
-  useBpmnJsReact : ReturnType< typeof useBpmnJsReact>,
+  useBpmnJsReact? : ReturnType< typeof useBpmnJsReact>,
   xml?: any;
   height?: any;
   onLoading?: Function;

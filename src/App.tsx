@@ -94,7 +94,11 @@ function App() {
       </button>
       <br />
 
-      <BpmnJsReact xml={defaultBpmnXml} zoomActions={false}></BpmnJsReact>
+      <BpmnJsReact
+        useBpmnJsReact={bpmnReactJs}
+        xml={defaultBpmnXml}
+        zoomActions={false}
+      ></BpmnJsReact>
     </div>
   );
 }

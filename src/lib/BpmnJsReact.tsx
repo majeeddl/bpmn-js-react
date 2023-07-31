@@ -34,7 +34,12 @@ const BpmnJsReact: ForwardRefRenderFunction<
         )}
 
         {mode == "view" && (
-          <BpmnJsViewer xml={xml} {...props} ref={ref} useBpmnJsReact={useBpmnJsReact}></BpmnJsViewer>
+          <BpmnJsViewer
+            xml={xml}
+            {...props}
+            ref={ref}
+            useBpmnJsReact={useBpmnJsReact}
+          ></BpmnJsViewer>
         )}
       </MantineProvider>
     </>

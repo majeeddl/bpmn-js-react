@@ -1,5 +1,6 @@
 import "./index.scss";
 
+import { useBpmnJsReact } from "../hooks/bpmn.hook";
 import BpmnJsReact from "./BpmnJsReact";
 import {
   BpmnJsReactHandle,
@@ -8,4 +9,4 @@ import {
 // import BpmnJsModeler from "./BpmnJsModeler";
 
 export type { BpmnJsReactProps, BpmnJsReactHandle };
-export { BpmnJsReact };
+export { useBpmnJsReact, BpmnJsReact };
