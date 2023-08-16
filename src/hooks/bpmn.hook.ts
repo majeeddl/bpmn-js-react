@@ -22,7 +22,7 @@ export type BpmnJsReactHook = () => {
     callback: (err: any, xml: string) => void,
     options?: SaveXMLOptions
   ) => void;
-  saveXmLAsync: (options?: SaveXMLOptions) => Promise<SaveXMLResult>;
+  saveXmlAsync: (options?: SaveXMLOptions) => Promise<SaveXMLResult>;
   getElementById: (id: string) => any;
 
   zoomIn: (step?: number) => void;
@@ -70,7 +70,7 @@ export const useBpmnJsReact: BpmnJsReactHook = () => {
     bpmnModeler?.saveXML(options, callback);
   };
 
-  const saveXmLAsync: (
+  const saveXmlAsync: (
     options?: SaveXMLOptions
   ) => Promise<SaveXMLResult> = async (options = { format: false }) =>
     bpmnModeler?.saveXML(options);
@@ -134,7 +134,7 @@ export const useBpmnJsReact: BpmnJsReactHook = () => {
     setBpmnModeler,
     importXml,
     saveXml,
-    saveXmLAsync,
+    saveXmlAsync,
     getCanvas,
     getElements,
     getElementById,
