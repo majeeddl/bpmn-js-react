@@ -32,12 +32,17 @@ const ComponentForBpmnViewer = (props) => {
 const ComponentForBpmnModeler = (props) => {
 
   const bpmnReactJs = useBpmnJsReact();
-  
+ 
+  const saveXml = async () => {
+    const result = await bpmnReactJs.saveXml()
+
+    console.log(result?.xml)
+  }
 
   return (
      <div>
          <BpmnJsReact  useBpmnJsReact={bpmnReactJs} mode="edit" xml={xml} />
-         <button onClick={()=>  bpmnReactJs.saveXml((err,xml) => console.log(xml))}>Save Xml</>
+         <button onClick={()=> saveXml()}>Save Xml</>
      </div>
   );
 };
