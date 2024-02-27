@@ -11,7 +11,7 @@
 // };
 
 import { useBpmnJsReact } from "../hooks/bpmn.hook";
-import { TElement } from "./bpmn.interface";
+import { IBpmnElement } from "./bpmn.interface";
 
 export type BpmnJsReactHandle = {
   saveXml: Function;
@@ -22,7 +22,7 @@ export type BpmnJsReactHandle = {
   zoomIn: Function;
   zoomOut: Function;
   zoomFit: Function;
-  setColor: (elements: TElement[], color: { stroke?: string; fill?: string } | object) => void;
+  setColor: (elements: IBpmnElement[], color: { stroke?: string; fill?: string } | object) => void;
   addMarker: (id: string, cssClass: string) => void;
   removeMarker: (id: string, cssClass: string) => void;
 };
