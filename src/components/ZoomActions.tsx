@@ -15,17 +15,17 @@ const ZoomActions = ({
     <>
       <Button.Group orientation="vertical" style={{ width: 40 }}>
         {zoomIn && (
-          <Button variant="default" compact onClick={zoomIn}>
+          <Button variant="default" size="compact-sm" onClick={zoomIn}>
             <IconZoomIn size={17} />
           </Button>
         )}
         {zoomOut && (
-          <Button variant="default" compact onClick={zoomOut}>
+          <Button variant="default" size="compact-sm" onClick={zoomOut}>
             <IconZoomOut size={17} />
           </Button>
         )}
         {zoomFit && (
-          <Button variant="default" compact onClick={zoomFit}>
+          <Button variant="default" size="compact-sm" onClick={zoomFit}>
             <IconViewfinder size={17} />
           </Button>
         )}

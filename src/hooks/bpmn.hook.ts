@@ -2,27 +2,17 @@ import { useState } from "react";
 //import BpmnJSModeler from "bpmn-js/dist/bpmn-modeler.production.min.js";
 //@ts-ignore
 import BpmnModeler, { BpmnModeler as IBpmnModeler } from "bpmn-js/lib/Modeler";
-import {
-  ImportXMLResult,
-  ModdleElement,
-  SaveXMLOptions,
-  SaveXMLResult,
-} from "bpmn-js/lib/BaseViewer";
+import { ImportXMLResult, ModdleElement, SaveXMLOptions, SaveXMLResult } from "bpmn-js/lib/BaseViewer";
 
 export type BpmnJsReactHook = () => {
   bpmnModeler: ReturnType<typeof IBpmnModeler>;
-  setBpmnModeler: React.Dispatch<
-    React.SetStateAction<ReturnType<typeof IBpmnModeler>>
-  >;
-  importXml: (
-    xml: string,
-    bpmnDiagram?: ModdleElement | string
-  ) => Promise<ImportXMLResult>;
-  saveXml: (
-    callback: (err: any, xml: string) => void,
-    options?: SaveXMLOptions
-  ) => void;
-  saveXmlAsync: (options?: SaveXMLOptions) => Promise<SaveXMLResult>;
+  setBpmnModeler: React.Dispatch<React.SetStateAction<ReturnType<typeof IBpmnModeler>>>;
+  importXml: (xml: string, bpmnDiagram?: ModdleElement | string) => Promise<ImportXMLResult>;
+  // saveXml: (
+  //   callback: (err: any, xml: string) => void,
+  //   options?: SaveXMLOptions
+  // ) => void;
+  saveXml: (options?: SaveXMLOptions) => Promise<SaveXMLResult>;
   getElementById: (id: string) => any;
 
   zoomIn: (step?: number) => void;
@@ -41,38 +31,31 @@ export type BpmnJsReactHook = () => {
   getBusinessObject: (id: string) => any;
   getIncoming: (id: string) => any;
   getOutgoing: (id: string) => any;
-
 };
 
 export const useBpmnJsReact: BpmnJsReactHook = () => {
   const [xml, setXml] = useState<string>("");
-  const [bpmnModeler, setBpmnModeler] =
-    useState<ReturnType<typeof IBpmnModeler>>(null);
+  const [bpmnModeler, setBpmnModeler] = useState<ReturnType<typeof IBpmnModeler>>(null);
 
   //BASIC
 
   const getCanvas = () => bpmnModeler?.get("canvas");
 
-  const importXml: (
-    xml: string,
-    bpmnDiagram?: ModdleElement | string
-  ) => Promise<ImportXMLResult> = (xml: string) => {
+  const importXml: (xml: string, bpmnDiagram?: ModdleElement | string) => Promise<ImportXMLResult> = (xml: string) => {
     return bpmnModeler?.importXML(xml);
   };
 
-  const saveXml = (
-    callback: (err: any, xml: string) => void,
-    options: SaveXMLOptions = {
-      format: false,
-    }
-  ) => {
-    // console.log(bpmnModeler);
-    bpmnModeler?.saveXML(options, callback);
-  };
+  // const saveXml = (
+  //   callback: (err: any, xml: string) => void,
+  //   options: SaveXMLOptions = {
+  //     format: false,
+  //   }
+  // ) => {
+  //   // console.log(bpmnModeler);
+  //   bpmnModeler?.saveXML(options, callback);
+  // };
 
-  const saveXmlAsync: (
-    options?: SaveXMLOptions
-  ) => Promise<SaveXMLResult> = async (options = { format: false }) =>
+  const saveXml: (options?: SaveXMLOptions) => Promise<SaveXMLResult> = async (options = { format: false }) =>
     bpmnModeler?.saveXML(options);
 
   const getElements = () => {
@@ -134,7 +117,7 @@ export const useBpmnJsReact: BpmnJsReactHook = () => {
     setBpmnModeler,
     importXml,
     saveXml,
-    saveXmlAsync,
+    // saveXmlAsync,
     getCanvas,
     getElements,
     getElementById,

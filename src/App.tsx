@@ -1,6 +1,6 @@
-import { ElementRef, useRef, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import { BpmnJsReactHandle } from "./lib";
+
 import BpmnJsReact from "./lib/BpmnJsReact";
 import { defaultBpmnXml } from "./utils/bpmn.utils";
 import { useBpmnJsReact } from "./hooks/bpmn.hook";
@@ -9,7 +9,7 @@ import { useBpmnJsReact } from "./hooks/bpmn.hook";
 // import { IconZoomIn, IconZoomOut } from "@tabler/icons";
 
 function App() {
-  const ref = useRef<BpmnJsReactHandle>(null);
+  // const ref = useRef<BpmnJsReactHandle>(null);
 
   const [elements, setElements] = useState<any>([]);
 
@@ -20,12 +20,18 @@ function App() {
       <BpmnJsReact
         mode="edit"
         useBpmnJsReact={bpmnReactJs}
-        ref={ref}
+        // ref={ref}
         click={(e: any) => setElements([e.element])}
       ></BpmnJsReact>
       <button
         onClick={async () => {
-          bpmnReactJs.saveXml((err: any, xml: string) => console.log(xml));
+          const result = await bpmnReactJs.saveXml({
+            format: true,
+          });
+
+          // console.log(result);
+
+          console.log(result.xml);
 
           // console.log(await bpmnReactJs.saveXmLAsync());
           // console.log(
@@ -63,7 +69,7 @@ function App() {
       <button
         onClick={() => {
           elements.forEach((element: any) => {
-            ref.current?.addMarker(element.id, "highlight");
+            // ref.current?.addMarker(element.id, "highlight");
           });
         }}
       >
@@ -72,7 +78,7 @@ function App() {
       <button
         onClick={() => {
           elements.forEach((element: any) => {
-            ref.current?.removeMarker(element.id, "highlight");
+            // ref.current?.removeMarker(element.id, "highlight");
           });
         }}
       >
@@ -116,11 +122,7 @@ function App() {
       </button>
       <br />
 
-      <BpmnJsReact
-        useBpmnJsReact={bpmnReactJs}
-        xml={defaultBpmnXml}
-        zoomActions={false}
-      ></BpmnJsReact>
+      <BpmnJsReact useBpmnJsReact={bpmnReactJs} xml={defaultBpmnXml} zoomActions={false}></BpmnJsReact>
     </div>
   );
 }
