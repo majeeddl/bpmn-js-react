@@ -11,28 +11,25 @@
 // };
 
 import { useBpmnJsReact } from "../hooks/bpmn.hook";
-import { IElement } from "./bpmn.interface";
+import { TElement } from "./bpmn.interface";
 
 export type BpmnJsReactHandle = {
   saveXml: Function;
   saveXmlAsync: Function;
   importXml: Function;
-  getModeler : Function;
+  getModeler: Function;
   getCanvas: Function;
   zoomIn: Function;
   zoomOut: Function;
   zoomFit: Function;
-  setColor: (
-    elements: IElement[],
-    color: { stroke?: string; fill?: string } | object
-  ) => void;
-  addMarker : (id : string , cssClass : string) => void;
-  removeMarker : (id : string , cssClass : string) => void;
+  setColor: (elements: TElement[], color: { stroke?: string; fill?: string } | object) => void;
+  addMarker: (id: string, cssClass: string) => void;
+  removeMarker: (id: string, cssClass: string) => void;
 };
 
 export type BpmnJsReactProps = {
   mode?: "view" | "edit";
-  useBpmnJsReact? : ReturnType< typeof useBpmnJsReact>,
+  useBpmnJsReact?: ReturnType<typeof useBpmnJsReact>;
   xml?: any;
   height?: any;
   onLoading?: Function;

@@ -86,9 +86,8 @@ function App() {
       </button>
       <button
         onClick={() => {
-          bpmnReactJs.setAttribute(elements[0]?.id, "property", {
-            name: "test",
-          });
+          bpmnReactJs.setAttribute(elements[0]?.id, "property", JSON.stringify({ test: "test" }));
+          bpmnReactJs.setAttribute(elements[0]?.id, "settings", JSON.stringify({ time: true }));
         }}
       >
         setAttribute

@@ -97,11 +97,11 @@ export const useBpmnJsReact: BpmnJsReactHook = () => {
   };
 
   const getAttribute = (id: string, key: string) => {
-    return getBusinessObject(id)[key];
+    return getBusinessObject(id).$attrs[key];
   };
 
   const setAttribute = (id: any, name: string, value: any) => {
-    getBusinessObject(id)[name] = value;
+    bpmnModeler.get("modeling").updateProperties(getElementById(id), { [name]: value });
   };
 
   const getIncoming = (id: string) => {
